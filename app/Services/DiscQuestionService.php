@@ -11,6 +11,11 @@ class DiscQuestionService
 		$questions = DiscQuestion::where('type','personal_coaching')->get()->all();
 		return $questions;
 	}
+	// return role assessment questions
+    public function getRoleQuestions(){
+        $questions = DiscQuestion::where('type','role_assessment')->get()->all();
+        return $questions;
+    }
 
 	public function create_pc_question($dataArray){
 		$data = array_merge([

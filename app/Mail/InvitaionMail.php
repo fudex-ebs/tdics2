@@ -31,6 +31,7 @@ class InvitaionMail extends Mailable
      */
     public function build()
     {
+//        dd($this->invitation->group_report->owner);
         return $this->view('mail.invitation',['invitation' => $this->invitation]);
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Http\Request;
 use Auth;
 
 class LoginController extends Controller
@@ -29,6 +29,17 @@ class LoginController extends Controller
      */
     
     protected $redirectTo = '/account';
+
+//    protected function authenticated(Request $request, $user)
+//    {
+//        if($user->role == "admin"){
+//            return redirect('admin/dashboard');
+//        }elseif($user->role == "individual"){
+//            return redirect('/company');
+//        }else{
+//            return redirect('/account');
+//        }
+//    }
     /**
      * Create a new controller instance.
      *

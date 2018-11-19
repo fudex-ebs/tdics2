@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are individual account
+                    You are {{Auth::user()->role}} account
                 </div>
             </div>
         </div>

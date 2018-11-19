@@ -22,8 +22,12 @@ class QuizService
            'slug' => uniqid(),
            'user_id' => Auth::user()->id
         ]);
-
-        $questions = $this->DiscQuestionService->getPersonalQuestions();
+        if(Auth::user()->role == "individual"){
+            $questions = $this->DiscQuestionService->getPersonalQuestions();
+        }else{
+            $questions = $this->DiscQuestionService->getRoleQuestions();
+        }
+//        $questions = $this->DiscQuestionService->getPersonalQuestions();
 
         foreach ($questions as $counter => $question) {
         	Answer::create([

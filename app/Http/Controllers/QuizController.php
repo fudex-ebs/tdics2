@@ -20,7 +20,12 @@ class QuizController extends Controller
         if(Auth::user()->has_quiz()){
             return redirect('/account');
         }
-        $questions = $this->DiscQuestionService->getPersonalQuestions();
+        if(Auth::user()->role == "individual"){
+            $questions = $this->DiscQuestionService->getPersonalQuestions();
+        }else{
+            $questions = $this->DiscQuestionService->getRoleQuestions();
+        }
+//        $questions = $this->DiscQuestionService->getPersonalQuestions();
         return view('quiz.create',['questions'=>$questions]);
     }
 
@@ -33,7 +38,7 @@ class QuizController extends Controller
     //  report
     public function report($slug){
         $quiz = $this->QuizService->get_quiz_by_slug($slug);
-        return view('quiz.report',['quiz'=>$quiz]);;
+        return view('quiz.report',['quiz'=>$quiz]);
     }
 
 

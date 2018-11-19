@@ -22,7 +22,7 @@ class Invitation extends Model
     public function user_toke_quiz(){
         $user = User::where('email',$this->email)->first();
         if($user){
-            return $user->has_quiz() ? true : false;;
+            return $user->has_quiz() ? true : false;
         }
     	return false;
     }

@@ -27,15 +27,15 @@
 		<!--end::Page Vendors Styles -->
 
 		<!--begin::Base Styles -->
-		<link href="/metronic/assets/vendors/base/vendors.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('/metronic/assets/vendors/base/vendors.bundle.css') }}" rel="stylesheet" type="text/css" />
 
 		<!--RTL version:<link href="/metronic/assets/vendors/base/vendors.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
-		<link href="/metronic/assets/demo/default/base/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('/metronic/assets/demo/default/base/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 
 		<!--RTL version:<link href="/metronic/assets/demo/default/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Base Styles -->
-		<link rel="shortcut icon" href="/metronic/assets/demo/default/media/img/logo/favicon.ico" />
+		<link rel="shortcut icon" href="{{ asset('/metronic/assets/demo/default/media/img/logo/favicon.ico') }} " />
 		<script>
 			(function(i, s, o, g, r, a, m) {
 				i['GoogleAnalyticsObject'] = r;
@@ -100,8 +100,8 @@
 
 
 		<!--begin::Base Scripts -->
-		<script src="/metronic/assets/vendors/base/vendors.bundle.js" type="text/javascript"></script>
-		<script src="/metronic/assets/demo/default/base/scripts.bundle.js" type="text/javascript"></script>
+		<script src="{{ asset('/metronic/assets/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('/metronic/assets/demo/default/base/scripts.bundle.js')}}" type="text/javascript"></script>
 
 		<!--end::Base Scripts -->
 

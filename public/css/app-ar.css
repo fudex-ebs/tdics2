@@ -1,0 +1,19 @@
+.card-header {
+    text-align: right;
+}
+.form-check-label {
+    margin-right: 25px;
+}
+.invalid-feedback {
+    text-align: right;
+
+}
+.nav-item a {
+    text-align: right;
+}
+.card-body{
+    text-align: right;
+}
+.result{
+    text-align: center;
+}

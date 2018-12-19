@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ __('messages.e-magnet') }}</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet" type="text/css">
@@ -16,7 +16,7 @@
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
-                font-weight: 200;
+                font-weight: 100;
                 height: 100vh;
                 margin: 0;
             }
@@ -40,13 +40,18 @@
                 right: 10px;
                 top: 18px;
             }
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 10px;
+            }
 
             .content {
                 text-align: center;
             }
 
             .title {
-                font-size: 84px;
+                font-size:54px;
             }
 
             .links > a {
@@ -62,31 +67,38 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            .
         </style>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/account') }}">my account</a>
+                        <a href="{{ url('/account') }}">{{ __('messages.account') }}</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
+                        <a href="{{ route('login') }}">{{ __('messages.login') }}</a>
+                        <a href="{{ route('register') }}">{{ __('messages.register') }}</a>
                     @endauth
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                    <a href="{{ route('lang.switch', $lang) }}">{{__('messages.'.$language)}}</a>
+                            @endif
+                        @endforeach
                 </div>
             @endif
 
             <div class="content">
                 <div class="title m-b-md">
-                    wellcome
+                    {{ __('messages.welcome') }}
                 </div>
 
                 <div class="links">
                 @auth
-                    <a href="{{ url('/account/personal_coching/answer_exam') }}">take exam</a>
+                    <a href="{{ url('/account/personal_coching/answer_exam') }}">{{__('messages.take_exam')}}</a>
                 @else
-                    <a href="{{ route('register') }}">take exam</a>
+                    <a href="{{ route('register') }}">{{__('messages.take_exam')}}</a>
                 @endauth
                                         
                 </div>

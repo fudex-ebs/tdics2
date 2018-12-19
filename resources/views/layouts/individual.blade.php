@@ -7,10 +7,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ __('messages.e-magnet') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    @if(app()->getLocale() == "ar")
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.min.css" rel="stylesheet" type="text/css">
+    @endif
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -18,13 +23,17 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @if(app()->getLocale() == "ar")
+        <link href="{{ asset('css/app-ar.css') }}" rel="stylesheet">
+
+    @endif
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ __('messages.e-magnet') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -32,25 +41,23 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="navbar-nav">
                         @if(Auth::user() && Auth::user()->has_quiz())
                         <li class="nav-item">
                             <a  class="nav-link" href="{{route('pc_exam.report',Auth::user()->quiz->slug)}}" >
-                                <strong>my report</strong>
+                                <strong>{{__('messages.my_report')}}</strong>
                             </a>
 
-
-
                         </li>
-                        <li class="nav-item">
-                            <a  class="nav-link"  href="{{route('group.index')}}"  >
-                                <strong>groups</strong>
-                            </a>
-                        </li>
+                        {{--<li class="nav-item">--}}
+                            {{--<a  class="nav-link"  href="{{route('group.index')}}"  >--}}
+                                {{--<strong>groups</strong>--}}
+                            {{--</a>--}}
+                        {{--</li>--}}
                         @else
                         <li class="nav-item">
                             <a  class="nav-link" href="{{route('pc_exam.create')}}" >
-                                <strong>take an exam</strong>
+                                <strong>{{__('messages.take_exam')}}</strong>
                             </a>
                         </li>
                         @endif
@@ -61,10 +68,10 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('messages.login') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('messages.register') }}</a>
                             </li>
                         @else
                             <li class="nav-item dropdown">
@@ -76,7 +83,7 @@
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('messages.logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -87,8 +94,24 @@
                         @endguest
 
                     </ul>
+                    <div class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            {{ __('messages.'.Config::get('languages')[App::getLocale()]) }}
+                        </a>
+                        <ul class="dropdown-menu" style="text-align: center">
+                            @foreach (Config::get('languages') as $lang => $language)
+                                @if ($lang != App::getLocale())
+                                    <li>
+                                        <a href="{{ route('lang.switch', $lang) }}">{{__('messages.'.$language)}}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+
                 </div>
             </div>
+
         </nav>
 
         <main class="py-4">

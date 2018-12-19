@@ -41,6 +41,24 @@ class LoginController extends Controller
 //        }
 //    }
     /**
+     * Log the user out of the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+
+        if (! $request->session()->has('applocale')) {
+            $request->session()->invalidate();
+        }
+//        $request->session()->invalidate();
+
+        return $this->loggedOut($request) ?: redirect('/');
+    }
+
+    /**
      * Create a new controller instance.
      *
      * @return void

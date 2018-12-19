@@ -7,7 +7,7 @@
         <div class="m-stack m-stack--ver m-stack--general">
           <div class="m-stack__item m-stack__item--middle m-brand__logo">
             <a href="index.html" class="m-brand__logo-wrapper">
-              <img alt="" src="/metronic/assets/demo/default/media/img/logo/logo_default_dark.png" />
+              <img alt="" src="{{ asset('/metronic/assets/demo/default/media/img/logo/logo_default_dark.png')}}" />
             </a>
           </div>
           <div class="m-stack__item m-stack__item--middle m-brand__tools">
@@ -733,7 +733,7 @@
               <li class="m-nav__item m-topbar__languages m-dropdown m-dropdown--small m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width" m-dropdown-toggle="click">
                 <a href="#" class="m-nav__link m-dropdown__toggle">
                   <span class="m-nav__link-text">
-                    <img class="m-topbar__language-selected-img" src="/metronic/assets/app/media/img/flags/020-flag.svg">
+                    <img class="m-topbar__language-selected-img" src="{{ asset('/metronic/assets/app/media/img/flags/020-flag.svg')}}">
                   </span>
                 </a>
                 <div class="m-dropdown__wrapper">
@@ -748,7 +748,7 @@
                           <li class="m-nav__item m-nav__item--active">
                             <a href="#" class="m-nav__link m-nav__link--active">
                               <span class="m-nav__link-icon">
-                                <img class="m-topbar__language-img" src="/metronic/assets/app/media/img/flags/020-flag.svg">
+                                <img class="m-topbar__language-img" src="{{ asset('/metronic/assets/app/media/img/flags/020-flag.svg')}}">
                               </span>
                               <span class="m-nav__link-title m-topbar__language-text m-nav__link-text">USA</span>
                             </a>

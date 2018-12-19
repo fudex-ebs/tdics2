@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">{{__('messages.dashboard')}}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,8 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @if(Auth::user()->role == "individual")
+                        {{__('messages.indi_acc')}}
+                    @elseif(Auth::user()->role == "company")
+                        {{__('messages.comp_acc')}}
+                    @else
+                        {{__('messages.admin_acc')}}
+                    @endif
 
-                    You are {{Auth::user()->role}} account
                 </div>
             </div>
         </div>
